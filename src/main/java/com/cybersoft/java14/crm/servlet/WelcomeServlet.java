@@ -15,5 +15,7 @@ public class WelcomeServlet extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		resp.getWriter().append("welcome!!!");
+		resp.getWriter().append("Tuấn");
+		
 	}
 }
