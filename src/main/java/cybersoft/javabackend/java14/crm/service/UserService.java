@@ -16,5 +16,22 @@ private UserRepository repository;
 		
 		return repository.getUsers();
 	}
+	
+	public User getOneUser(int id) {
+		return repository.getOneUser(id);
+	}
+	
+	public boolean updateUser(int userID, String name, String email, String phone, String address, int role_id) {		
+		return repository.updateUser(userID, name, email, phone, address, role_id) == 1 ? true : false;
+	}
+	
+	public boolean removeUser(int userID) {
+		return repository.removeUser(userID) == 1 ? true : false;
+	}
+	
+	public boolean addUser(String name, String email, String password, String phone, String address, int role_id) {
+		return repository.addUser(name, email, password, phone, address, role_id) == 1 ? true : false;
+	}
+	
 
 }

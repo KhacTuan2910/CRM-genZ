@@ -1,3 +1,4 @@
+<%@page import="cybersoft.javabackend.java14.crm.util.UrlConst"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -14,10 +15,14 @@
 	            <div>
 	                <nav aria-label="breadcrumb">
 	                    <ol class="breadcrumb mb-0">
-	                        <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+	                        <li class="breadcrumb-item"><a href="<%= request.getContextPath() + UrlConst.USER_DASHBOARD%>">Dashboard</a></li>
+	                        <li class="breadcrumb-item"><a href="<%= request.getContextPath() + UrlConst.USER_LIST%>">User</a></li>
+	                        <li class="breadcrumb-item active" aria-current="page">
+	                            List User
+	                        </li>
 	                    </ol>
 	                </nav>
-	                <h1 class="m-0">Dashboard</h1>
+	                <h1 class="m-0">List User</h1>
 	            </div>
 	        </div>
 	    </div>
@@ -37,6 +42,7 @@
                                  <th>Phone</th>
                                  <th>Address</th>
                                  <th></th>
+                                 <th></th>
                              </tr>
                          </thead>
                          <tbody class="list" id="staff">
@@ -50,8 +56,18 @@
                                   <td>${user.address }</td>
                                   <td>
                                   	<div class="ml-auto">
-                            			<a href="" class="btn btn-light"><i class="material-icons icon-16pt text-muted mr-1">settings</i>
-                							Settings</a>
+                            			<a href="<%= request.getContextPath() + UrlConst.USER_UPDATE%>?id=${user.id}" class="btn btn-light">
+                            				<i class="material-icons icon-16pt text-muted mr-1">settings</i>
+                            				Update
+                						</a>
+                       				 </div>
+                                  </td>
+                                  <td>
+                                  	<div class="ml-auto">
+                            			<a href="<%= request.getContextPath() + UrlConst.USER_DELETE%>?id=${user.id}" class="btn btn-light">
+                            				<i class="material-icons icon-16pt text-muted mr-1">delete</i>
+                            				Delete
+                						</a>
                        				 </div>
                                   </td>
                               </tr>

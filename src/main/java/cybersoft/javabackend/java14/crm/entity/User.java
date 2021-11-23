@@ -11,8 +11,7 @@ public class User {
 	private Role role;
 	
 	/* constructors */
-	public User(int id, String name, String email, String password, String phone, String address, Role role) {
-		this.id = id;
+	public User(String name, String email, String password, String phone, String address, Role role) {
 		this.name = name;
 		this.email = email;
 		this.password = password;
