@@ -54,7 +54,7 @@ public class UserServlet extends HttpServlet {
 				break;
 			case UrlConst.USER_UPDATE:
 				int userID = Integer.parseInt(req.getParameter("id"));
-				req.setAttribute("users", service.getOneUser(userID));
+				req.setAttribute("user", service.getOneUser(userID));
 				req.getRequestDispatcher(JspConst.USER_UPDATE).forward(req,resp);
 				break;
 			case UrlConst.USER_DELETE:
@@ -79,7 +79,15 @@ public class UserServlet extends HttpServlet {
 			String email = req.getParameter("email");
 			String phone = req.getParameter("phone");
 			String address = req.getParameter("address");
-			int role_id = Integer.parseInt(req.getParameter("role"));
+			String role = req.getParameter("role");
+			int role_id;
+			if(role.equals("ROLE_ADMIN")) {
+				role_id = 1;
+			} else if(role.equals("ROLE_LEADER")) {
+				role_id = 2;
+			} else {
+				role_id = 3;
+			}
 			
 			service.updateUser(userID, name, email, phone, address, role_id);
 			resp.sendRedirect(req.getContextPath() + UrlConst.USER_LIST);

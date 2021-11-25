@@ -8,4 +8,12 @@ public class DbQuery {
 	public static final String USER_REMOVE ="DELETE FROM crm_user WHERE id = ?";
 	public static final String USER_ADD = "INSERT crm_user(name, email, password, phone, address, role_id) VALUES (?, ?, ?, ?, ?, ?)";
 	
+	/* PROJECT */
+	public static final String PROJECT_WITH_USER = "SELECT id, name, description, start_date, end_date, user_id FROM crm_project";
+	public static final String PROJECT_UPDATE = "UPDATE crm_project SET name = ?, description = ?, start_date = ?, end_date = ? WHERE id = ?";
+	public static final String PROJECT_ADD = "INSERT INTO crm_project(name, description, start_date, end_date, user_id) VALUES (?, ?, ?, ?, ?)";
+	public static final String PROJECT_REMOVE = "DELETE FROM crm_project WHERE id = ?";
+	
+	
+	
 }

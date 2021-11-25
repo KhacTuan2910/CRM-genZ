@@ -6,7 +6,7 @@ import cybersoft.javabackend.java14.crm.entity.User;
 import cybersoft.javabackend.java14.crm.repository.UserRepository;
 
 public class UserService {
-private UserRepository repository;
+	private UserRepository repository;
 	
 	public UserService() {
 		repository = new UserRepository();

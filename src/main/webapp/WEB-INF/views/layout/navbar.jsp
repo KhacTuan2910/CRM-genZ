@@ -21,10 +21,10 @@
                             Project
                         </a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">
+                            <a class="dropdown-item" href="<%= request.getContextPath() + UrlConst.PROJECT_LIST%>">
                                 Manage Project
                             </a>
-                            <a class="dropdown-item" href="#">
+                            <a class="dropdown-item" href="<%= request.getContextPath() + UrlConst.PROJECT_ADD%>">
                                 Create Project
                             </a>
                         </div>

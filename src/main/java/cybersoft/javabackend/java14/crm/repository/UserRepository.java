@@ -123,9 +123,10 @@ public class UserRepository {
 			
 			
 			PreparedStatement statement = connection.prepareStatement(query);
-			ResultSet rs = statement.executeQuery();
 			
 			statement.setInt(1, id);
+			
+			ResultSet rs = statement.executeQuery();
 			user.setId(rs.getInt("user_id"));
 			user.setName(rs.getString("user_name"));
 			user.setEmail(rs.getString("email"));
