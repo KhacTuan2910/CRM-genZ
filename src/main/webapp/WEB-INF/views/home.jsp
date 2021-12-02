@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@page import="cybersoft.javabackend.java14.crm.util.UrlConst"%>
 
 <head>
 <meta charset="UTF-8">
-<title>Homepage</title>
+<title>DASHBOARD</title>
 </head>
 
 <body>
@@ -14,17 +15,10 @@
 	            <div>
 	                <nav aria-label="breadcrumb">
 	                    <ol class="breadcrumb mb-0">
-	                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-	                        <li class="breadcrumb-item active" aria-current="page">
-	                            Dashboard
-	                        </li>
+	                        <li class="breadcrumb-item"><a href="<%= request.getContextPath() + UrlConst.DASHBOARD%>">Dashboard</a></li>
 	                    </ol>
 	                </nav>
 	                <h1 class="m-0">Dashboard</h1>
-	            </div>
-	            <div class="ml-auto">
-	                <a href="" class="btn btn-light"><i class="material-icons icon-16pt text-muted mr-1">settings</i>
-	    Settings</a>
 	            </div>
 	        </div>
 	    </div>

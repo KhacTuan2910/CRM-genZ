@@ -50,13 +50,58 @@ public class UserRepository {
 		return users;
 	}
 	
-	public int updateUser(int userID, String name, String email, String phone, String address, int role_id) {
+	public List<User> getUserRoleMember() {
+		List<User> users = new LinkedList<User>();
+		Connection connection = null;
+		try {
+			connection = MySQLConnection.getConnection();
+			String query = DbQuery.USER_ROLE_MEMBER;
+			
+			PreparedStatement statement = connection.prepareStatement(query);
+			ResultSet rs = statement.executeQuery();
+			
+			while(rs.next()) {
+				User user = new User();
+				
+				user.setId(rs.getInt("user_id"));
+				user.setName(rs.getString("user_name"));
+				user.setEmail(rs.getString("email"));
+				user.setPassword(rs.getString("password"));
+				user.setPhone(rs.getString("phone"));
+				user.setAddress(rs.getString("address"));
+				
+				Role role = new Role();
+				role.setId(rs.getInt("role_id"));
+				role.setName(rs.getString("role_name"));
+				role.setDescription(rs.getString("role_description"));
+				
+				user.setRole(role);
+				
+				users.add(user);
+			}
+		} catch (SQLException e) {
+			System.out.println("Không thể kết nối đến cơ sở dữ liệu");
+			e.printStackTrace();
+		} 
+		
+		return users;
+	}
+	
+	public int updateUser(int userID, String name, String email, String phone, String address, String role) {
 		try {
 			Connection connection = MySQLConnection.getConnection();
 			String query = DbQuery.USER_UPDATE;
 			
 			PreparedStatement statement = connection.prepareStatement(query);
 			
+			int role_id;
+			if(role.equals("ROLE_LEADER")) {
+				role_id = 2;
+			} else if(role.equals("ROLE_ADMIN")) {
+				role_id = 1;
+			} else {
+				role_id = 3;
+			}
 			statement.setString(1, name);
 			statement.setString(2, email);
 			statement.setString(3, phone);
@@ -74,12 +119,19 @@ public class UserRepository {
 		return 0;
 	}
 	
-	public int addUser(String name, String email, String password, String phone, String address, int role_id) {
+	public int addUser(String name, String email, String password, String phone, String address, String role) {
 		try {
 			Connection connection = MySQLConnection.getConnection();
 			String query = DbQuery.USER_ADD;
 			PreparedStatement statement = connection.prepareStatement(query);
-			
+			int role_id;
+			if(role.equals("ROLE_LEADER")) {
+				role_id = 2;
+			} else if(role.equals("ROLE_ADMIN")) {
+				role_id = 1;
+			} else {
+				role_id = 3;
+			}
 			statement.setString(1, name);
 			statement.setString(2, email);
 			statement.setString(3, password);
@@ -114,6 +166,38 @@ public class UserRepository {
 		return 0;
 	}
 	
+	public User getOneUserByName(String name) {
+		User user = new User();
+		try {
+			Connection connection = MySQLConnection.getConnection();
+			String query = DbQuery.GET_ONE_USER_BY_NAME;
+			
+			
+			PreparedStatement statement = connection.prepareStatement(query);
+			
+			statement.setString(1, name);
+			
+			ResultSet rs = statement.executeQuery();
+			user.setId(rs.getInt("user_id"));
+			user.setName(rs.getString("user_name"));
+			user.setEmail(rs.getString("email"));
+			user.setPassword(rs.getString("password"));
+			user.setPhone(rs.getString("phone"));
+			user.setAddress(rs.getString("address"));
+			
+			Role role = new Role();
+			role.setId(rs.getInt("role_id"));
+			role.setName(rs.getString("role_name"));
+			role.setDescription(rs.getString("role_description"));
+			
+			user.setRole(role);
+		} catch(SQLException e) {
+			System.out.println("Không thể kết nối đến database");
+			e.printStackTrace();
+		}
+		
+		return user;
+	}
 	public User getOneUser(int id) {
 		User user = new User();
 		Role role = new Role();
@@ -147,4 +231,36 @@ public class UserRepository {
 		return user;
 	}
 
+	public User checkLogin(String email, String password) {
+		User user = new User();
+		try {
+			Connection connection = MySQLConnection.getConnection();
+			String query = DbQuery.CHECK_LOGIN;
+			
+			PreparedStatement statement = connection.prepareStatement(query);
+			statement.setString(1, email);
+			statement.setString(2, password);
+			
+			ResultSet rs = statement.executeQuery();
+			while(rs.next()) {
+				user.setId(rs.getInt("user_id"));
+				user.setName(rs.getString("user_name"));
+				user.setPhone(rs.getString("phone"));
+				user.setAddress(rs.getString("address"));
+				
+				Role role = new Role();
+				role.setId(rs.getInt("role_id"));
+				role.setName(rs.getString("role_name"));
+				role.setDescription(rs.getString("description"));
+				
+				user.setRole(role);
+			}
+			
+			
+		} catch(SQLException e) {
+			System.out.println("Không thể kết nối đến database");
+			e.printStackTrace();
+		}
+		return user;
+	}
 }

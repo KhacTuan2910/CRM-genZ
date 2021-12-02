@@ -46,6 +46,7 @@ public class ProjectServlet extends HttpServlet {
 				req.getRequestDispatcher(JspConst.PROJECT_LIST).forward(req, resp);
 				break;
 			case UrlConst.PROJECT_UPDATE:
+				req.setAttribute("users", service.getLeader());
 				req.getRequestDispatcher(JspConst.PROJECT_UPDATE).forward(req,resp);
 				break;
 			case UrlConst.PROJECT_DELETE:
@@ -69,8 +70,9 @@ public class ProjectServlet extends HttpServlet {
 		String description = req.getParameter("description");
 		String start_date = req.getParameter("start-date");
 		String end_date = req.getParameter("end-date");
+		String leader_name = req.getParameter("leader");
 		
-		service.updateProject(id, name, description, start_date, end_date);
+		service.updateProject(id, name, description, start_date, end_date, leader_name);
 		resp.sendRedirect(req.getContextPath() + UrlConst.PROJECT_LIST);
 	}
 }

@@ -5,7 +5,7 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>Create User</title>
+	<title>CREATE USER</title>
 </head>
 
 <body>
@@ -15,7 +15,7 @@
 	            <div>
 	                <nav aria-label="breadcrumb">
 	                    <ol class="breadcrumb mb-0">
-	                        <li class="breadcrumb-item"><a href="<%= request.getContextPath() + UrlConst.USER_DASHBOARD%>">Dashboard</a></li>
+	                        <li class="breadcrumb-item"><a href="<%= request.getContextPath() + UrlConst.DASHBOARD%>">Dashboard</a></li>
 	                        <li class="breadcrumb-item"><a href="<%= request.getContextPath() + UrlConst.USER_LIST%>">User</a></li>
 	                        <li class="breadcrumb-item active" aria-current="page">
 	                            Create User
@@ -59,7 +59,11 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Role ID: (1. ROLE_ADMIN, 2. ROLE_LEADER, 3. ROLE_MEMBER)</label>
-                                    <input name="role" class="form-control" id="exampleInputPassword1" placeholder="Enter role id ...">
+                                    <select name="role" class="form-control">
+									  <option>ROLE_ADMIN</option>
+									  <option>ROLE_LEADER</option>
+									  <option>ROLE_MEMBER</option>
+									</select>
                                 </div>
                                 <button type="submit" class="btn btn-primary">Submit</button>
                             </form>

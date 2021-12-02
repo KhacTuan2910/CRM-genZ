@@ -15,7 +15,7 @@
 	            <div>
 	                <nav aria-label="breadcrumb">
 	                    <ol class="breadcrumb mb-0">
-	                        <li class="breadcrumb-item"><a>Dashboard</a></li>
+	                        <li class="breadcrumb-item"><a href="<%= request.getContextPath() + UrlConst.DASHBOARD%>">Dashboard</a></li>
 	                        <li class="breadcrumb-item"><a href="<%= request.getContextPath() + UrlConst.PROJECT_LIST%>">Project</a></li>
 	                        <li class="breadcrumb-item active" aria-current="page">
 	                            Create Project
@@ -57,8 +57,12 @@
                                     <input name="end-date" class="form-control" id="exampleInputPassword1" placeholder="Enter end date ...">
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputPassword1">Leader ID:</label>
-                                    <input name="user_id" class="form-control" id="exampleInputPassword1" placeholder="Enter end date ...">
+                                    <label for="exampleInputPassword1">Leader:</label>
+                                    <select name="leader" class="form-control">
+                                    	<c:forEach var="user" items="${users }">
+									  		<option>${user.name }</option>
+									  	</c:forEach>
+									</select>
                                 </div>
                                 <button type="submit" class="btn btn-primary">Submit</button>
                             </form>

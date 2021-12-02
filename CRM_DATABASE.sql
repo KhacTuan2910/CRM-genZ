@@ -24,8 +24,8 @@ CREATE TABLE IF NOT EXISTS crm_project (
 	id INT NOT NULL AUTO_INCREMENT,
 	name VARCHAR(255) NOT NULL,
 	description VARCHAR(255),
-	start_date date,
-	end_date date,
+	start_date VARCHAR(255),
+	end_date VARCHAR(255),
 	user_id INT NOT NULL,
 	PRIMARY KEY (id)
 );
@@ -41,8 +41,8 @@ CREATE TABLE IF NOT EXISTS crm_task (
 	id INT NOT NULL AUTO_INCREMENT,
 	name VARCHAR(255) NOT NULL,
 	description VARCHAR(255),
-	start_date date,
-	end_date date,
+	start_date VARCHAR(255),
+	end_date VARCHAR(255),
 	user_id INT NOT NULL,
 	status_id INT NOT NULL,
 	project_id INT NOT NULL,

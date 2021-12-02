@@ -13,7 +13,7 @@
             <div class="navbar-collapse collapse" id="navbarsExample03">
                 <ul class="nav navbar-nav flex">
                     <li class="nav-item">
-                        <a class="nav-link active" href="dashboard.html">
+                        <a class="nav-link active" href="<%= request.getContextPath() + UrlConst.DASHBOARD%>">
                             Dashboard</a>
                     </li>
                     <li class="nav-item dropdown">
@@ -42,8 +42,16 @@
                             </a>
                         </div>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Task</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Task</a>
+                        <div class="dropdown-menu">
+                        <a class="dropdown-item" href="<%= request.getContextPath() + UrlConst.TASK_LIST %>">
+                                List Task
+                            </a>
+                            <a class="dropdown-item" href="<%= request.getContextPath() + UrlConst.TASK_ADD %>">
+                                Create Task
+                            </a>
+                        </div>
                     </li>
                     
                 </ul>

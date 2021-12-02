@@ -5,7 +5,7 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>MANAGE PROJECT</title>
+	<title>LIST TASK</title>
 </head>
 
 <body>
@@ -16,13 +16,13 @@
 	                <nav aria-label="breadcrumb">
 	                    <ol class="breadcrumb mb-0">
 	                        <li class="breadcrumb-item"><a href="<%= request.getContextPath() + UrlConst.DASHBOARD%>">Dashboard</a></li>
-	                        <li class="breadcrumb-item"><a href="<%= request.getContextPath() + UrlConst.PROJECT_LIST%>">Project</a></li>
+	                        <li class="breadcrumb-item"><a href="<%= request.getContextPath() + UrlConst.USER_LIST%>">Task</a></li>
 	                        <li class="breadcrumb-item active" aria-current="page">
-	                            Manage Project
+	                            List Task
 	                        </li>
 	                    </ol>
 	                </nav>
-	                <h1 class="m-0">Manage Project</h1>
+	                <h1 class="m-0">List Task</h1>
 	            </div>
 	        </div>
 	    </div>
@@ -36,27 +36,29 @@
                          <thead>
                              <tr>
                              	 <th>ID</th>
-                                 <th>Project</th>
-                                 <th>Description</th>
+                                 <th>Name</th>
                                  <th>Start Date</th>
                                  <th>End Date</th>
-                                 <th>Leader</th>
+                                 <th>User</th>
+                                 <th>Project</th>
+                                 <th>Status</th>
                                  <th></th>
                                  <th></th>
                              </tr>
                          </thead>
                          <tbody class="list" id="staff">
-                         	<c:forEach var="project" items="${projects }">
+                         	<c:forEach var="task" items="${tasks }">
                               <tr class="selected">
-                             	  <td>${project.id }</td>
-                                  <td>${project.name }</td>
-                                  <td>${project.description }</td>
-                                  <td>${project.start_date }</td>
-                                  <td>${project.end_date }</td>
-                                  <td>${project.user.name }</td>
+                             	  <td>${task.id }</td>
+                                  <td>${task.name }</td>
+                                  <td>${task.start_date }</td>
+                                  <td>${task.end_date }</td>
+                                  <td>${task.user.name }</td>
+                                  <td>${task.project.name }</td>
+                                  <td>${task.status.name }</td>
                                   <td>
                                   	<div class="ml-auto">
-                            			<a href="<%= request.getContextPath() + UrlConst.PROJECT_UPDATE%>?id=${project.id}" class="btn btn-light">
+                            			<a href="<%= request.getContextPath() + UrlConst.TASK_UPDATE%>?id=${task.id}" class="btn btn-light">
                             				<i class="material-icons icon-16pt text-muted mr-1">settings</i>
                             				Update
                 						</a>
@@ -64,7 +66,7 @@
                                   </td>
                                   <td>
                                   	<div class="ml-auto">
-                            			<a href="<%= request.getContextPath() + UrlConst.PROJECT_DELETE%>?id=${project.id}" class="btn btn-light">
+                            			<a href="<%= request.getContextPath() + UrlConst.TASK_DELETE%>?id=${task.id}" class="btn btn-light">
                             				<i class="material-icons icon-16pt text-muted mr-1">delete</i>
                             				Delete
                 						</a>

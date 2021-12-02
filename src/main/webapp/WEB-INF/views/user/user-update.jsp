@@ -5,7 +5,7 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>Update User</title>
+	<title>UPDATE USER</title>
 </head>
 
 <body>
@@ -15,7 +15,7 @@
 	            <div>
 	                <nav aria-label="breadcrumb">
 	                    <ol class="breadcrumb mb-0">
-	                        <li class="breadcrumb-item"><a href="<%= request.getContextPath() + UrlConst.USER_DASHBOARD%>">Dashboard</a></li>
+	                        <li class="breadcrumb-item"><a href="<%= request.getContextPath() + UrlConst.DASHBOARD%>">Dashboard</a></li>
 	                        <li class="breadcrumb-item"><a href="<%= request.getContextPath() + UrlConst.USER_LIST%>">User</a></li>
 	                        <li class="breadcrumb-item active" aria-current="page">
 	                            Update User

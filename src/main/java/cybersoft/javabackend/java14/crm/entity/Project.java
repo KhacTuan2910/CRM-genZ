@@ -7,20 +7,20 @@ public class Project {
 	private String description;
 	private String start_date;
 	private String end_date;
-	private int user_id;
+	private User user;
 	
 	/* constructors */
 	public Project() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Project(int id, String name, String description, String start_date, String end_date, int user_id) {
+	public Project(int id, String name, String description, String start_date, String end_date, User user) {
 		this.id = id;
 		this.name = name;
 		this.description = description;
 		this.start_date = start_date;
 		this.end_date = end_date;
-		this.user_id = user_id;
+		this.user = user;
 	}
 
 	/* getters/setters */
@@ -64,13 +64,14 @@ public class Project {
 		this.end_date = end_date;
 	}
 
-	public int getUser_id() {
-		return user_id;
+	public User getUser() {
+		return user;
 	}
 
-	public void setUser_id(int user_id) {
-		this.user_id = user_id;
+	public void setUser(User user) {
+		this.user = user;
 	}
+	
 
 
 	

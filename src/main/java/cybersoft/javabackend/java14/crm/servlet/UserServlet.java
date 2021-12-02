@@ -17,7 +17,7 @@ import cybersoft.javabackend.java14.crm.util.JspConst;
 @WebServlet(
 		name = "userServlet",
 		urlPatterns = {
-				UrlConst.USER_DASHBOARD,
+				UrlConst.DASHBOARD,		
 				UrlConst.USER_LIST,
 				UrlConst.USER_DELETE,
 				UrlConst.USER_UPDATE
@@ -48,6 +48,9 @@ public class UserServlet extends HttpServlet {
 		
 		
 		switch (action) {
+			case UrlConst.DASHBOARD:
+				req.getRequestDispatcher(JspConst.DASHBOARD).forward(req, resp);
+				break;
 			case UrlConst.USER_LIST:
 				req.setAttribute("users", service.getUsers());
 				req.getRequestDispatcher(JspConst.USER_LIST).forward(req,resp);
@@ -80,16 +83,8 @@ public class UserServlet extends HttpServlet {
 			String phone = req.getParameter("phone");
 			String address = req.getParameter("address");
 			String role = req.getParameter("role");
-			int role_id;
-			if(role.equals("ROLE_ADMIN")) {
-				role_id = 1;
-			} else if(role.equals("ROLE_LEADER")) {
-				role_id = 2;
-			} else {
-				role_id = 3;
-			}
 			
-			service.updateUser(userID, name, email, phone, address, role_id);
+			service.updateUser(userID, name, email, phone, address, role);
 			resp.sendRedirect(req.getContextPath() + UrlConst.USER_LIST);
 //		}
 	}
