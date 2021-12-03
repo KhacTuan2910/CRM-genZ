@@ -245,6 +245,7 @@ public class UserRepository {
 			while(rs.next()) {
 				user.setId(rs.getInt("user_id"));
 				user.setName(rs.getString("user_name"));
+				user.setEmail(rs.getString("email"));
 				user.setPhone(rs.getString("phone"));
 				user.setAddress(rs.getString("address"));
 				
